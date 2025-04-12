@@ -36,6 +36,7 @@ public class PlayerCamera : MonoBehaviour {
         transform.localPosition = new float3(x, transform.position.y, 0f);
     }
 
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected() {
         if(path.Count <= 1) return;
         
@@ -48,4 +49,5 @@ public class PlayerCamera : MonoBehaviour {
             Handles.DrawLine(path[i], path[i + 1]);
         }
     }
+#endif
 }

@@ -35,8 +35,12 @@ public class PlayerMovement : MonoBehaviour {
         if(direction != 0) Move(direction);
     }
 
+    private void OnDestroy() {
+        _jump.started -= Jump;
+    }
+
     private void Move(float direction) {
-        _rigidbody2D.velocity = new float2(direction * moveSpeed, _rigidbody2D.velocity.y);
+        _rigidbody2D.linearVelocity = new float2(direction * moveSpeed, _rigidbody2D.linearVelocity.y);
         _spriteRenderer.flipX = direction < 0;
     }
 
